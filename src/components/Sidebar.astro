@@ -1,11 +1,58 @@
 <aside>
-  <h3>Cat Links</h3>
+  <h3>Resume Sections</h3>
   <ul>
-    <li><a href="#">Purrfect Posts</a></li>
-    <li><a href="#">Feline Photos</a></li>
-    <li><a href="#">Clawful Chronicles</a></li>
+    <li><a href="#principal-frontend-lead">Principal Frontend Lead</a></li>
+    <li><a href="#frontend-lead">Frontend Lead</a></li>
+    <li><a href="#reporting-engineering-lead">Reporting Engineering Lead</a></li>
+    <li><a href="#lead-software-engineer">Lead Software Engineer</a></li>
+    <li><a href="#frontend-lead-engineer">Frontend Lead Engineer</a></li>
+    <li><a href="#senior-software-engineer">Senior Software Engineer</a></li>
+    <li><a href="#senior-software-engineer-tradescape">Senior Software Engineer (TradeScape)</a></li>
+    <li><a href="#director-of-software-development">Director of Software Development</a></li>
+    <li><a href="#senior-software-developer">Senior Software Developer</a></li>
+    <li><a href="#assistant-programmer">Assistant Programmer</a></li>
   </ul>
 </aside>
+
+<script>
+  document.querySelectorAll('aside a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      document.querySelectorAll('#resumeTable tr.highlight').forEach(row => {
+        row.classList.remove('highlight');
+      });
+
+      const id = this.getAttribute('href');
+      const targetRow = document.querySelector(id);
+      if (targetRow) {
+        targetRow.classList.add('highlight');
+      }
+    });
+  });
+</script>
+
+<style>
+  aside {
+    width: 200px;
+    background-color: #f4f4f4;
+    padding: 1rem;
+  }
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  li a {
+    display: block;
+    color: #333;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+  li a:hover {
+    background-color: #555;
+    color: white;
+  }
+</style>
 
 <style>
   aside {

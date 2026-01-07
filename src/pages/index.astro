@@ -3,11 +3,172 @@ import MainLayout from '../layouts/MainLayout.astro';
 ---
 
 <MainLayout>
-  <h2>Welcome to my cat-tastic website!</h2>
+  <h2>About Me</h2>
   <p>
-    Cat ipsum dolor sit amet, purr sleep on your face hiss scratch everything. Sniff other cat's butt and hang jaw half open thereafter sleep on my human's head but leave fur on owners clothes. Rub against owner because grooming is happening soon scratch at the door then walk away yet hunt anything that moves. Swat at dog hide when guests come over. If it fits, i sits kitty power!. Lick master's hand at first then bite because im moody intrigued by the shower, so knock dish off table head butt owner's knee. Find empty spot in cupboard and sleep all day hunt anything that moves, so eat owner's food intrigued by the shower.
+    I am a passionate developer with experience in various technologies. Below is a summary of my projects and skills.
+    You can filter the table by entering tags like "React", "JavaScript", or "Astro".
   </p>
-  <p>
-    Stare at ceiling throwup on your pillow. Lick face hiss at owner, pee in litter box hiss at owner hide when guests come over. Attack the dog then pretend it was an accident chew foot, for jump on human and sleep on her all night long be long in the bed, purr in the morning and then give a bite to every human around for not waking up request food, sunbathe attack the dog then pretend it was an accident. Cat playing a fiddle in a big red box. Jump on counter remove annoying owner from bed step on your keyboard, for spend all night ensuring people don't sleep sleep all day. Roll on the floor purring your whiskers off intrigued by the shower.
-  </p>
+  
+  <input type="text" id="filterInput" onkeyup="filterTable()" placeholder="Filter by tags..">
+
+  <table id="resumeTable">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Tags</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="principal-frontend-lead">
+        <td data-label="Title">Principal Frontend Lead</td>
+        <td data-label="Description">Genentech is a biotech company dedicated to developing life saving medicines. The company is credited as one of the founders of biotech. As the Frontend Lead, I have defined the strategy and practices for the development for any new application and lead migrations of their legacy systems (imagine the tech debt of a 50 year old company!)</td>
+        <td data-label="Tags">AI</td>
+      </tr>
+      <tr id="frontend-lead">
+        <td data-label="Title">Frontend Lead</td>
+        <td data-label="Description">Color is a genetics testing company, their most valuable contract is the *All of Us* project with the National Institutes of Health (NIH), which aims to have over one million users. As FrontEnd Lead, I work with Product, Design, Genetic scientists, researchers, Security and Compliance to build applications and ensure their quality and maintenance after launch.</td>
+        <td data-label="Tags">TypeScript, React, MUI, Python, Django, Node.js, CircleCI, AWS, Github Actions</td>
+      </tr>
+      <tr id="reporting-engineering-lead">
+        <td data-label="Title">Reporting Engineering Lead</td>
+        <td data-label="Description">Invitae is a genetics testing company offering clinical grade sequencing and reports to its customers. Reporting via their proprietary Clinical Decision tooling is one of their major differentiating factors and large value add for their customers, which I was the Tech Lead.</td>
+        <td data-label="Tags">React, TypeScript, Python, Django</td>
+      </tr>
+      <tr id="lead-software-engineer">
+        <td data-label="Title">Lead Software Engineer</td>
+        <td data-label="Description">Nuna is a Healthcare data warehouse and analytics company that is focused on building solutions for payers to help them implement Value Based Care. Their tools lowered the barrier for customers to create ad-hoc reports and gain valuable insights from their data.</td>
+        <td data-label="Tags">Python, Django, Looker, BigQuery, React, TypeScript, Ant Design, Wordpress</td>
+      </tr>
+      <tr id="frontend-lead-engineer">
+        <td data-label="Title">Frontend Lead Engineer</td>
+        <td data-label="Description">HealthTap is a telemedicine and medical knowledge base company.</td>
+        <td data-label="Tags">WebRTC, React, TypeScript, Selenium, Karma, Jasmine</td>
+      </tr>
+      <tr id="senior-software-engineer">
+        <td data-label="Title">Senior Software Engineer</td>
+        <td data-label="Description">Index was a point of sale and processing company that created loyalty and marketing campaigns for their retail customers.</td>
+        <td data-label="Tags">Java, AWS, AngularJS, JavaFX</td>
+      </tr>
+      <tr id="senior-software-engineer-tradescape">
+        <td data-label="Title">Senior Software Engineer</td>
+        <td data-label="Description">TradeScape was a data processing company with customers in the entertainment industry who used our products to calculate their royalties.</td>
+        <td data-label="Tags">C#, RESTful, MySql, MariaDB, ADO.NET, NCover, Selenium</td>
+      </tr>
+      <tr id="director-of-software-development">
+        <td data-label="Title">Director of Software Development</td>
+        <td data-label="Description">Centrad Healthcare was a durable medical goods supplier and third-party biller. Their custom built ERP and aggressive vendor contracts allowed them to win nearly all competitive bidding areas.</td>
+        <td data-label="Tags">C#, .NET, WPF, X12</td>
+      </tr>
+      <tr id="senior-software-developer">
+        <td data-label="Title">Senior Software Developer</td>
+        <td data-label="Description">ZS Associates is a consulting firm that focuses primarily on sales force size and market research in the Pharmaceuticals & Biotech space. Their custom tools give them a competitive edge.</td>
+        <td data-label="Tags">C#</td>
+      </tr>
+      <tr id="assistant-programmer">
+        <td data-label="Title">Assistant Programmer</td>
+        <td data-label="Description">The Agricultural, Consumer and Environmental Sciences (ACES) department at Urbana-Champaign has a research and development department which builds Geographic Information System (GIS) applications to visualize location-based information, such as a map.</td>
+        <td data-label="Tags">C#, ASP .NET, ESRI-GIS, JavaScript</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    function filterTable() {
+      // Declare variables
+      var input, filter, table, tr, td, i, j, txtValue;
+      input = document.getElementById("filterInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("resumeTable");
+      tr = table.getElementsByTagName("tr");
+
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 1; i < tr.length; i++) {
+        tr[i].style.display = "none"; // Hide the row initially
+        td = tr[i].getElementsByTagName("td");
+        for (j = 0; j < td.length; j++) {
+          if (td[j]) {
+            txtValue = td[j].textContent || td[j].innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = ""; // Show the row if a match is found
+              break; // No need to check other cells in the same row
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    #filterInput {
+      width: 100%;
+      font-size: 16px;
+      padding: 12px 20px 12px 40px;
+      border: 1px solid #ddd;
+      margin-bottom: 12px;
+      box-sizing: border-box;
+    }
+
+    #resumeTable {
+      border-collapse: collapse;
+      width: 100%;
+      border: 1px solid #ddd;
+      font-size: 1em;
+    }
+
+    #resumeTable th, #resumeTable td {
+      text-align: left;
+      padding: 12px;
+      word-break: break-word;
+    }
+
+    #resumeTable th {
+      background-color: #f2f2f2;
+    }
+
+    #resumeTable tr {
+      border-bottom: 1px solid #ddd;
+    }
+    
+    #resumeTable tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    #resumeTable tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    #resumeTable tr.highlight {
+      background-color: #ffff99 !important;
+    }
+
+    /* Responsive styles for mobile */
+    @media screen and (max-width: 600px) {
+      #resumeTable thead {
+        display: none;
+      }
+      #resumeTable, #resumeTable tbody, #resumeTable tr, #resumeTable td {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      #resumeTable tr {
+        margin-bottom: 15px;
+      }
+      #resumeTable td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+      }
+      #resumeTable td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 45%;
+        padding-left: 15px;
+        font-weight: bold;
+        text-align: left;
+      }
+    }
+  </style>
 </MainLayout>
