@@ -14,59 +14,59 @@ import MainLayout from '../layouts/MainLayout.astro';
   <table id="resumeTable">
     <thead>
       <tr>
-        <th>Title</th>
+        <th>Project</th>
         <th>Description</th>
         <th>Tags</th>
       </tr>
     </thead>
     <tbody>
-      <tr id="principal-frontend-lead">
-        <td data-label="Title">Principal Frontend Lead</td>
+      <tr>
+        <td data-label="Project">Principal Frontend Lead</td>
         <td data-label="Description">Genentech is a biotech company dedicated to developing life saving medicines. The company is credited as one of the founders of biotech. As the Frontend Lead, I have defined the strategy and practices for the development for any new application and lead migrations of their legacy systems (imagine the tech debt of a 50 year old company!)</td>
         <td data-label="Tags">AI</td>
       </tr>
-      <tr id="frontend-lead">
-        <td data-label="Title">Frontend Lead</td>
+      <tr>
+        <td data-label="Project">Frontend Lead</td>
         <td data-label="Description">Color is a genetics testing company, their most valuable contract is the *All of Us* project with the National Institutes of Health (NIH), which aims to have over one million users. As FrontEnd Lead, I work with Product, Design, Genetic scientists, researchers, Security and Compliance to build applications and ensure their quality and maintenance after launch.</td>
         <td data-label="Tags">TypeScript, React, MUI, Python, Django, Node.js, CircleCI, AWS, Github Actions</td>
       </tr>
-      <tr id="reporting-engineering-lead">
-        <td data-label="Title">Reporting Engineering Lead</td>
+      <tr>
+        <td data-label="Project">Reporting Engineering Lead</td>
         <td data-label="Description">Invitae is a genetics testing company offering clinical grade sequencing and reports to its customers. Reporting via their proprietary Clinical Decision tooling is one of their major differentiating factors and large value add for their customers, which I was the Tech Lead.</td>
         <td data-label="Tags">React, TypeScript, Python, Django</td>
       </tr>
-      <tr id="lead-software-engineer">
-        <td data-label="Title">Lead Software Engineer</td>
+      <tr>
+        <td data-label="Project">Lead Software Engineer</td>
         <td data-label="Description">Nuna is a Healthcare data warehouse and analytics company that is focused on building solutions for payers to help them implement Value Based Care. Their tools lowered the barrier for customers to create ad-hoc reports and gain valuable insights from their data.</td>
         <td data-label="Tags">Python, Django, Looker, BigQuery, React, TypeScript, Ant Design, Wordpress</td>
       </tr>
-      <tr id="frontend-lead-engineer">
-        <td data-label="Title">Frontend Lead Engineer</td>
+      <tr>
+        <td data-label="Project">Frontend Lead Engineer</td>
         <td data-label="Description">HealthTap is a telemedicine and medical knowledge base company.</td>
         <td data-label="Tags">WebRTC, React, TypeScript, Selenium, Karma, Jasmine</td>
       </tr>
-      <tr id="senior-software-engineer">
-        <td data-label="Title">Senior Software Engineer</td>
+      <tr>
+        <td data-label="Project">Senior Software Engineer</td>
         <td data-label="Description">Index was a point of sale and processing company that created loyalty and marketing campaigns for their retail customers.</td>
         <td data-label="Tags">Java, AWS, AngularJS, JavaFX</td>
       </tr>
-      <tr id="senior-software-engineer-tradescape">
-        <td data-label="Title">Senior Software Engineer</td>
+      <tr>
+        <td data-label="Project">Senior Software Engineer</td>
         <td data-label="Description">TradeScape was a data processing company with customers in the entertainment industry who used our products to calculate their royalties.</td>
         <td data-label="Tags">C#, RESTful, MySql, MariaDB, ADO.NET, NCover, Selenium</td>
       </tr>
-      <tr id="director-of-software-development">
-        <td data-label="Title">Director of Software Development</td>
+      <tr>
+        <td data-label="Project">Director of Software Development</td>
         <td data-label="Description">Centrad Healthcare was a durable medical goods supplier and third-party biller. Their custom built ERP and aggressive vendor contracts allowed them to win nearly all competitive bidding areas.</td>
         <td data-label="Tags">C#, .NET, WPF, X12</td>
       </tr>
-      <tr id="senior-software-developer">
-        <td data-label="Title">Senior Software Developer</td>
+      <tr>
+        <td data-label="Project">Senior Software Developer</td>
         <td data-label="Description">ZS Associates is a consulting firm that focuses primarily on sales force size and market research in the Pharmaceuticals & Biotech space. Their custom tools give them a competitive edge.</td>
         <td data-label="Tags">C#</td>
       </tr>
-      <tr id="assistant-programmer">
-        <td data-label="Title">Assistant Programmer</td>
+      <tr>
+        <td data-label="Project">Assistant Programmer</td>
         <td data-label="Description">The Agricultural, Consumer and Environmental Sciences (ACES) department at Urbana-Champaign has a research and development department which builds Geographic Information System (GIS) applications to visualize location-based information, such as a map.</td>
         <td data-label="Tags">C#, ASP .NET, ESRI-GIS, JavaScript</td>
       </tr>
@@ -76,7 +76,7 @@ import MainLayout from '../layouts/MainLayout.astro';
   <script>
     function filterTable() {
       // Declare variables
-      var input, filter, table, tr, td, i, j, txtValue;
+      var input, filter, table, tr, td, i, txtValue;
       input = document.getElementById("filterInput");
       filter = input.value.toUpperCase();
       table = document.getElementById("resumeTable");
@@ -84,15 +84,13 @@ import MainLayout from '../layouts/MainLayout.astro';
 
       // Loop through all table rows, and hide those who don't match the search query
       for (i = 1; i < tr.length; i++) {
-        tr[i].style.display = "none"; // Hide the row initially
-        td = tr[i].getElementsByTagName("td");
-        for (j = 0; j < td.length; j++) {
-          if (td[j]) {
-            txtValue = td[j].textContent || td[j].innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-              tr[i].style.display = ""; // Show the row if a match is found
-              break; // No need to check other cells in the same row
-            }
+        td = tr[i].getElementsByTagName("td")[2]; // Column with tags
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
           }
         }
       }
@@ -136,10 +134,6 @@ import MainLayout from '../layouts/MainLayout.astro';
 
     #resumeTable tr:hover {
       background-color: #f1f1f1;
-    }
-
-    #resumeTable tr.highlight {
-      background-color: #ffff99 !important;
     }
 
     /* Responsive styles for mobile */
