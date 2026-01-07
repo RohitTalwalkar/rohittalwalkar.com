@@ -18,18 +18,29 @@ import Footer from '../components/Footer.astro';
     body {
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
+      height: 100vh;
       margin: 0;
     }
     .main-container {
       display: flex;
       flex: 1;
+      overflow: hidden;
     }
     main {
       flex: 1;
       padding: 1rem;
-      padding-bottom: 60px; /* To avoid content being hidden by the fixed footer */
+      padding-bottom: 200px; /* To avoid content being hidden by the fixed footer and blur effect */
       min-width: 50vw;
+      max-width: 1000px; /* New: Set max-width */
+      margin: 0 auto; /* New: Center the main content */
+      overflow-y: auto;
+    }
+    main::-webkit-scrollbar {
+      display: none;
+    }
+    main {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
     }
   </style>
 </head>
