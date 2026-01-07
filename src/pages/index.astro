@@ -11,8 +11,7 @@ import MainLayout from '../layouts/MainLayout.astro';
   
   <input type="text" id="filterInput" onkeyup="filterTable()" placeholder="Filter by tags..">
 
-  <div class="table-container">
-    <table id="resumeTable">
+  <table id="resumeTable">
       <thead>
         <tr>
           <th>Title</th>
@@ -73,7 +72,6 @@ import MainLayout from '../layouts/MainLayout.astro';
         </tr>
       </tbody>
     </table>
-  </div>
 
   <script>
     function filterTable() {
@@ -102,18 +100,6 @@ import MainLayout from '../layouts/MainLayout.astro';
   </script>
 
   <style>
-    .table-container {
-      position: relative;
-    }
-    .table-container::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 50px;
-      background: linear-gradient(to top, white, transparent);
-    }
     #filterInput {
       width: 100%;
       font-size: 16px;
