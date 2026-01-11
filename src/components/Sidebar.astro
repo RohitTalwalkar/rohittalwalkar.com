@@ -36,6 +36,9 @@
             behavior: 'smooth'
           });
         }
+        setTimeout(() => {
+          targetRow.classList.remove('highlight');
+        }, 2000);
       }
     });
   });
