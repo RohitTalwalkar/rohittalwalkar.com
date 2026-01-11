@@ -10,7 +10,7 @@ import Footer from '../components/Footer.astro';
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width" />
   <title>Rohit Talwalkar</title>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/jpeg" href="/rohit.jfif" />
   <style>
     :root {
       font-family: system-ui, sans-serif;
@@ -31,7 +31,7 @@ import Footer from '../components/Footer.astro';
       padding: 1rem;
       padding-bottom: 200px; /* To avoid content being hidden by the fixed footer and blur effect */
       min-width: 50vw;
-      max-width: 1000px; /* New: Set max-width */
+      max-width: 1200px; /* New: Set max-width */
       margin: 0 auto; /* New: Center the main content */
       overflow-y: auto;
     }
@@ -53,20 +53,5 @@ import Footer from '../components/Footer.astro';
     </main>
   </div>
   <Footer />
-  <script>
-    const canvas = document.createElement('canvas');
-    canvas.width = 64;
-    canvas.height = 64;
-    const ctx = canvas.getContext('2d');
-    ctx.fillStyle = '#333';
-    ctx.fillRect(0, 0, 64, 64);
-    ctx.fillStyle = 'white';
-    ctx.font = 'bold 40px system-ui';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText('RUT', 32, 32);
-    const link = document.querySelector("link[rel~='icon']");
-    link.href = canvas.toDataURL();
-  </script>
 </body>
 </html>
